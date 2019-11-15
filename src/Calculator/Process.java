@@ -21,8 +21,8 @@ public class Process {
                 result = myInt1 / myInt2;
                 break;
             default:
-                System.out.println("Я еще не придумал, как это починить");
-//                operatorVerify();
+                System.out.println("Я еще не придумал, как это починить, попробуем так:");
+              Input.operatorVerify();
         }
         return result;
 /////////// через if - else ///////////

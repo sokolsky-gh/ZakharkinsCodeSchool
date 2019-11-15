@@ -8,12 +8,10 @@ public class Input {
         System.out.println("Введите первое число");
         Input.numberVerify();
         Calculator.Process.myInt1 = Calculator.Process.currentNumber;
-        System.out.println("Вы должны выбрать номер желаемой операции:\n" +
-                "1. Сложение\n" + "2. Вычитание\n" + "3. Умножение\n" + "4. Деление");
+        Input.operatorVerify();
         //пока ввод не равен 1.2.3.4 выводим
         // System.out.println("ХЗ, че эт за операция, выберите операцию из предложенного");
         // и снова ждём корректного ввода
-        Input.operatorVerify();
         Process.operator = Process.currentOperator;
         System.out.println("Введите второе число");
         Input.numberVerify();
@@ -34,21 +32,26 @@ public class Input {
     }
 
     public static int operatorVerify() {
+        System.out.println("Вы должны выбрать номер желаемой операции:\n" +
+                "1. Сложение\n" + "2. Вычитание\n" + "3. Умножение\n" + "4. Деление");
         Scanner s = new Scanner(System.in);
         while (!s.hasNextInt()) {
-            System.out.println("Вы ввели не число, введите блть число пожалуйста");
+            System.out.println("Введите блть корректную команду пожалуйста");
             s.nextLine();
-
         }
-        Process.currentOperator = s.nextInt();
-        //требуем указать значение из диапазона
-/*        if (!s.hasNextInt()) { //если не число
-            System.out.println("Нужно ввести ЧИСЛО блть из указанного диапазона"); //то укажи число
+        switch (s.nextInt()) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+                Process.currentOperator = s.nextInt();
+                //вот здесь консоль просит дважды ввести операцию, хз чонетак
+                break;
+            default:
+                System.out.println("Введите блть корректную команду пожалуйста");
+                s.nextLine();
         }
-         else if (s.nextInt() == 1 || s.nextInt() == 2 || s.nextInt() == 3 || s.nextInt() == 4) {
-        System.out.println("Нужно ввести число ИЗ УКАЗАННОГО ДИАПАЗОНА блть");
-        } else {*/
-
         return Process.currentOperator;
+        //Process.currentOperator = s.nextInt();
     }
 }
